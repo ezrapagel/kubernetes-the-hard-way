@@ -1,5 +1,7 @@
 # Kubernetes The Hard Way
 
+:warning: This is a fork of the original [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way), I just added the equivalent commands for AWS when required, just so this wasn't a simple copy & paste exercise for me. I took many ideas from [Kubernetes The Hard Way - AWS](https://github.com/DaspawnW/kubernetes-the-hard-way-aws).
+
 This tutorial walks you through setting up Kubernetes the hard way. This guide is not for people looking for a fully automated command to bring up a Kubernetes cluster. If that's you then check out [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine), or the [Getting Started Guides](http://kubernetes.io/docs/getting-started-guides/).
 
 Kubernetes The Hard Way is optimized for learning, which means taking the long route to ensure you understand each task required to bootstrap a Kubernetes cluster.
@@ -20,9 +22,13 @@ Kubernetes The Hard Way guides you through bootstrapping a highly available Kube
 * [CNI Container Networking](https://github.com/containernetworking/cni) 0.6.0
 * [etcd](https://github.com/coreos/etcd) 3.3.5
 
+## Topology
+
+![k8s](images/k8s-networking.png)
+
 ## Labs
 
-This tutorial assumes you have access to the [Google Cloud Platform](https://cloud.google.com). While GCP is used for basic infrastructure requirements the lessons learned in this tutorial can be applied to other platforms.
+This tutorial assumes you have access to the [Google Cloud Platform](https://cloud.google.com) or [Amazon Web Services](https://aws.amazon.com/). While GCP or AWS are used for basic infrastructure requirements the lessons learned in this tutorial can be applied to other platforms.
 
 * [Prerequisites](docs/01-prerequisites.md)
 * [Installing the Client Tools](docs/02-client-tools.md)
