@@ -181,7 +181,6 @@ cfssl gencert \
 done
 ```
 
-
 Results:
 
 ```bash
@@ -231,7 +230,6 @@ Results:
 kube-controller-manager-key.pem
 kube-controller-manager.pem
 ```
-
 
 ### The Kube Proxy Client Certificate
 
@@ -310,7 +308,6 @@ Results:
 kube-scheduler-key.pem
 kube-scheduler.pem
 ```
-
 
 ### The Kubernetes API Server Certificate
 
