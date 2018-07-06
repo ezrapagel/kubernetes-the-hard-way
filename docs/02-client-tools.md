@@ -11,42 +11,42 @@ Download and install `cfssl` and `cfssljson` from the [cfssl repository](https:/
 
 ### OS X
 
-```
+```bash
 curl -o cfssl https://pkg.cfssl.org/R1.2/cfssl_darwin-amd64
 curl -o cfssljson https://pkg.cfssl.org/R1.2/cfssljson_darwin-amd64
 ```
 
-```
+```bash
 chmod +x cfssl cfssljson
 ```
 
-```
+```bash
 sudo mv cfssl cfssljson /usr/local/bin/
 ```
 
 Some OS X users may experience problems using the pre-built binaries in which case [Homebrew](https://brew.sh) might be a better option:
 
-```
+```bash
 brew install cfssl
 ```
 
 ### Linux
 
-```
+```bash
 wget -q --show-progress --https-only --timestamping \
   https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 \
   https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
 ```
 
-```
+```bash
 chmod +x cfssl_linux-amd64 cfssljson_linux-amd64
 ```
 
-```
+```bash
 sudo mv cfssl_linux-amd64 /usr/local/bin/cfssl
 ```
 
-```
+```bash
 sudo mv cfssljson_linux-amd64 /usr/local/bin/cfssljson
 ```
 
@@ -54,13 +54,13 @@ sudo mv cfssljson_linux-amd64 /usr/local/bin/cfssljson
 
 Verify `cfssl` version 1.2.0 or higher is installed:
 
-```
+```bash
 cfssl version
 ```
 
 > output
 
-```
+```bash
 Version: 1.2.0
 Revision: dev
 Runtime: go1.6
@@ -74,29 +74,29 @@ The `kubectl` command line utility is used to interact with the Kubernetes API S
 
 ### OS X
 
-```
+```bash
 curl -o kubectl https://storage.googleapis.com/kubernetes-release/release/v1.10.2/bin/darwin/amd64/kubectl
 ```
 
-```
+```bash
 chmod +x kubectl
 ```
 
-```
+```bash
 sudo mv kubectl /usr/local/bin/
 ```
 
 ### Linux
 
-```
+```bash
 wget https://storage.googleapis.com/kubernetes-release/release/v1.10.2/bin/linux/amd64/kubectl
 ```
 
-```
+```bash
 chmod +x kubectl
 ```
 
-```
+```bash
 sudo mv kubectl /usr/local/bin/
 ```
 
@@ -104,13 +104,13 @@ sudo mv kubectl /usr/local/bin/
 
 Verify `kubectl` version 1.10.2 or higher is installed:
 
-```
+```bash
 kubectl version --client
 ```
 
 > output
 
-```
+```bash
 Client Version: version.Info{Major:"1", Minor:"10", GitVersion:"v1.10.2", GitCommit:"81753b10df112992bf51bbc2c2f85208aad78335", GitTreeState:"clean", BuildDate:"2018-04-27T09:22:21Z", GoVersion:"go1.9.3", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
