@@ -16,7 +16,7 @@ Follow the Google Cloud SDK [documentation](https://cloud.google.com/sdk/) to in
 
 Verify the Google Cloud SDK version is 200.0.0 or higher:
 
-```
+```bash
 gcloud version
 ```
 
@@ -26,19 +26,19 @@ This tutorial assumes a default compute region and zone have been configured.
 
 If you are using the `gcloud` command-line tool for the first time `init` is the easiest way to do this:
 
-```
+```bash
 gcloud init
 ```
 
 Otherwise set a default compute region:
 
-```
+```bash
 gcloud config set compute/region us-west1
 ```
 
 Set a default compute zone:
 
-```
+```bash
 gcloud config set compute/zone us-west1-c
 ```
 
@@ -60,7 +60,7 @@ Follow the AWS Command Line Interface [documentation](https://docs.aws.amazon.co
 
 Verify the AWS Command Line Interface version is 1.15.39 or higher:
 
-```
+```bash
 aws --version
 ```
 
@@ -70,13 +70,13 @@ This tutorial assumes a default compute region has been configured.
 
 If you are using the `aws` command-line tool for the first time `configure` is the easiest way to do this:
 
-```
+```bash
 aws configure
 ```
 
 Otherwise set a default compute region:
 
-```
+```bash
 aws configure set region us-east-1
 ```
 
