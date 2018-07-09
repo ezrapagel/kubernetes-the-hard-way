@@ -12,16 +12,35 @@ In this section you will gather the information required to create routes in the
 
 Print the internal IP address and Pod CIDR range for each worker instance:
 
-```
+---
+
+- GCP
+
+```bash
 for instance in worker-0 worker-1 worker-2; do
   gcloud compute instances describe ${instance} \
     --format 'value[separator=" "](networkInterfaces[0].networkIP,metadata.items[0].value)'
 done
 ```
 
+- AWS
+
+```bash
+for i in 0 1 2; do
+  kubectl patch node worker-${i} -p '{"spec":{"podCIDR":"10.200.'${i}'.0/24"}}'
+done
+```
+
+```bash
+kubectl get nodes \
+  --output=jsonpath='{range .items[*]}{.status.addresses[?(@.type=="InternalIP")].address} {.spec.podCIDR} {"\n"}{end}'
+```
+
+---
+
 > output
 
-```
+```bash
 10.240.0.20 10.200.0.0/24
 10.240.0.21 10.200.1.0/24
 10.240.0.22 10.200.2.0/24
@@ -31,7 +50,11 @@ done
 
 Create network routes for each worker instance:
 
-```
+---
+
+- GCP
+
+```bash
 for i in 0 1 2; do
   gcloud compute routes create kubernetes-route-10-200-${i}-0-24 \
     --network kubernetes-the-hard-way \
@@ -40,9 +63,27 @@ for i in 0 1 2; do
 done
 ```
 
+- AWS
+
+```bash
+for i in 0 1 2; do
+  wk_id="worker_id$i"
+  aws ec2 create-route \
+    --route-table-id $tableId \
+    --destination-cidr-block 10.200.${i}.0/24 \
+    --instance-id ${!wk_id}
+done
+```
+
+---
+
 List the routes in the `kubernetes-the-hard-way` VPC network:
 
-```
+---
+
+- GCP
+
+```bash
 gcloud compute routes list --filter "network: kubernetes-the-hard-way"
 ```
 
@@ -55,6 +96,23 @@ default-route-df77b1e818a56b30  kubernetes-the-hard-way  10.240.0.0/24          
 kubernetes-route-10-200-0-0-24  kubernetes-the-hard-way  10.200.0.0/24  10.240.0.20               1000
 kubernetes-route-10-200-1-0-24  kubernetes-the-hard-way  10.200.1.0/24  10.240.0.21               1000
 kubernetes-route-10-200-2-0-24  kubernetes-the-hard-way  10.200.2.0/24  10.240.0.22               1000
+```
+
+- AWS
+
+```bash
+$ aws ec2 describe-route-tables --filters Name=vpc-id,Values=$vpcId --output text
+```
+
+> output
+
+```bash
+...
+ROUTES	10.200.0.0/24			i-0ed63f1e7e07ef0XX	020997832382	eni-0bb4485eda9b10aXX	CreateRoute	active
+ROUTES	10.200.1.0/24			i-0d8e1fb2ffd2596XX	020997832382	eni-0c9e694d5919b51XX	CreateRoute	active
+ROUTES	10.200.2.0/24			i-082e1ecbe1e228bXX	020997832382	eni-006e3ffe5aaecf1XX	CreateRoute	active
+ROUTES	10.240.0.0/24		local				CreateRouteTable	active
+ROUTES	0.0.0.0/0		igw-0a41a8c51c6c202XX				CreateRoute	active
 ```
 
 Next: [Deploying the DNS Cluster Add-on](12-dns-addon.md)
