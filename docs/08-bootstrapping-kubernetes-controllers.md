@@ -224,7 +224,7 @@ systemctl list-unit-files | grep enabled | grep kube
 
 > Output
 
-```bash
+```console
 kube-apiserver.service                     enabled
 kube-controller-manager.service            enabled
 kube-scheduler.service                     enabled

@@ -157,7 +157,7 @@ aws ec2 describe-security-groups --filter Name=vpc-id,Values=$vpcId --output tab
 
 > output
 
-```bash
+```console
 -------------------------------------------------------------
 |                  DescribeSecurityGroups                   |
 +-----------------------------------------------------------+
@@ -194,7 +194,7 @@ gcloud compute addresses list --filter="name=('kubernetes-the-hard-way')"
 
 > output
 
-```bash
+```console
 NAME                     REGION    ADDRESS        STATUS
 kubernetes-the-hard-way  us-west1  XX.XXX.XXX.XX  RESERVED
 ```
@@ -224,7 +224,7 @@ aws elb describe-load-balancers --query 'LoadBalancerDescriptions[].DNSName'
 
 > output
 
-```bash
+```console
 [
     "kubernetes-XXXXXXXXXX.us-east-1.elb.amazonaws.com"
 ]
@@ -289,7 +289,7 @@ gcloud compute instances list
 
 > output
 
-```bash
+```console
 NAME          ZONE        MACHINE_TYPE   PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP     STATUS
 controller-0  us-west1-c  n1-standard-1               10.240.0.10  XX.XXX.XXX.XXX  RUNNING
 controller-1  us-west1-c  n1-standard-1               10.240.0.11  XX.XXX.X.XX     RUNNING
@@ -362,7 +362,7 @@ $USER@controller-0:~$ exit
 ```
 > output
 
-```bash
+```console
 logout
 Connection to XX.XXX.XXX.XXX closed
 ```
@@ -460,7 +460,7 @@ aws ec2 describe-instances \
 
 > output
 
-```bash
+```console
 XXX.XX.XXX.XX    10.240.0.11    i-09734066f00792f9e
 controller-1
 XX.XXX.XXX.XX    10.240.0.21    i-08ba89f08d6e97225

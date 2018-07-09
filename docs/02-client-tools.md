@@ -60,7 +60,7 @@ cfssl version
 
 > output
 
-```bash
+```console
 Version: 1.2.0
 Revision: dev
 Runtime: go1.6
@@ -110,7 +110,7 @@ kubectl version --client
 
 > output
 
-```bash
+```console
 Client Version: version.Info{Major:"1", Minor:"10", GitVersion:"v1.10.2", GitCommit:"81753b10df112992bf51bbc2c2f85208aad78335", GitTreeState:"clean", BuildDate:"2018-04-27T09:22:21Z", GoVersion:"go1.9.3", Compiler:"gc", Platform:"linux/amd64"}
 ```
 

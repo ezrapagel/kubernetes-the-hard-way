@@ -40,7 +40,7 @@ kubectl get nodes \
 
 > output
 
-```bash
+```console
 10.240.0.20 10.200.0.0/24
 10.240.0.21 10.200.1.0/24
 10.240.0.22 10.200.2.0/24
@@ -89,7 +89,7 @@ gcloud compute routes list --filter "network: kubernetes-the-hard-way"
 
 > output
 
-```
+```console
 NAME                            NETWORK                  DEST_RANGE     NEXT_HOP                  PRIORITY
 default-route-236a40a8bc992b5b  kubernetes-the-hard-way  0.0.0.0/0      default-internet-gateway  1000
 default-route-df77b1e818a56b30  kubernetes-the-hard-way  10.240.0.0/24                            1000
@@ -106,7 +106,7 @@ $ aws ec2 describe-route-tables --filters Name=vpc-id,Values=$vpcId --output tex
 
 > output
 
-```bash
+```console
 ...
 ROUTES	10.200.0.0/24			i-0ed63f1e7e07ef0XX	020997832382	eni-0bb4485eda9b10aXX	CreateRoute	active
 ROUTES	10.200.1.0/24			i-0d8e1fb2ffd2596XX	020997832382	eni-0c9e694d5919b51XX	CreateRoute	active
@@ -114,5 +114,7 @@ ROUTES	10.200.2.0/24			i-082e1ecbe1e228bXX	020997832382	eni-006e3ffe5aaecf1XX	Cr
 ROUTES	10.240.0.0/24		local				CreateRouteTable	active
 ROUTES	0.0.0.0/0		igw-0a41a8c51c6c202XX				CreateRoute	active
 ```
+
+---
 
 Next: [Deploying the DNS Cluster Add-on](12-dns-addon.md)

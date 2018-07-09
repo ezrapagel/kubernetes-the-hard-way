@@ -317,7 +317,7 @@ kubectl get nodes --kubeconfig admin.kubeconfig
 
 > output
 
-```bash
+```console
 NAME       STATUS    ROLES     AGE       VERSION
 worker-0   Ready     <none>    20s       v1.10.2
 worker-1   Ready     <none>    20s       v1.10.2
