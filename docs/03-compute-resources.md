@@ -294,9 +294,7 @@ done
 
 - AWS
 
-#### Upload SSH Key
-
-Create one if you don't have one already. See this [example](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-key-pair.html#examples)
+Upload SSH Key. Create one if you don't have one already. See this [example](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-key-pair.html#examples)
 
 ```bash
 aws ec2 import-key-pair \
