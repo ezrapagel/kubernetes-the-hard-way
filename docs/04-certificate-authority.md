@@ -103,6 +103,8 @@ Kubernetes uses a [special-purpose authorization mode](https://kubernetes.io/doc
 
 Generate a certificate and private key for each Kubernetes worker node:
 
+---
+
 - GCP
 
 ```bash
@@ -180,6 +182,8 @@ cfssl gencert \
   ${instance}-csr.json | cfssljson -bare ${instance}
 done
 ```
+
+---
 
 Results:
 
@@ -313,6 +317,8 @@ kube-scheduler.pem
 
 The `kubernetes-the-hard-way` static IP address will be included in the list of subject alternative names for the Kubernetes API Server certificate. This will ensure the certificate can be validated by remote clients.
 
+---
+
 - GCP
 
 ```bash
@@ -328,6 +334,8 @@ KUBERNETES_PUBLIC_ADDRESS=$(aws elb describe-load-balancers \
   --query 'LoadBalancerDescriptions[].DNSName' \
   --output text)
 ```
+
+---
 
 Generate the Kubernetes API Server certificate and private key:
 

@@ -34,6 +34,8 @@ EOF
 
 Copy the `encryption-config.yaml` encryption config file to each controller instance:
 
+---
+
 - GCP
 
 ```bash
@@ -50,5 +52,7 @@ for instance in controller-0 controller-1 controller-2; do
   scp encryption-config.yaml ubuntu@${!ip}:~/
 done
 ```
+
+---
 
 Next: [Bootstrapping the etcd Cluster](07-bootstrapping-etcd.md)

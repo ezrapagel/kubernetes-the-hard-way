@@ -20,7 +20,7 @@ Verify the Google Cloud SDK version is 200.0.0 or higher:
 gcloud version
 ```
 
-### Set a Default Compute Region and Zone
+### Set a Default Compute Region and Zone (GCP)
 
 This tutorial assumes a default compute region and zone have been configured.
 
@@ -64,7 +64,7 @@ Verify the AWS Command Line Interface version is 1.15.39 or higher:
 aws --version
 ```
 
-### Set a Default Compute Region and Zone
+### Set a Default Compute Region and Zone (AWS)
 
 This tutorial assumes a default compute region has been configured.
 

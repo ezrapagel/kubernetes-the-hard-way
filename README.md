@@ -1,6 +1,6 @@
-# Kubernetes The Hard Way
+# Kubernetes The Hard Way (GCP and AWS)
 
-:warning: *This is a fork of the original [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way), I just added the equivalent commands for AWS when required, just so this wasn't a simple copy & paste exercise for me. I took many ideas from [Kubernetes The Hard Way - AWS](https://github.com/DaspawnW/kubernetes-the-hard-way-aws).*
+> :warning: *This is a fork of the original [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way), I just added the equivalent commands for AWS when required, just so this wasn't a simple copy & paste exercise for me. I took many ideas from [Kubernetes The Hard Way - AWS](https://github.com/DaspawnW/kubernetes-the-hard-way-aws).*
 
 This tutorial walks you through setting up Kubernetes the hard way. This guide is not for people looking for a fully automated command to bring up a Kubernetes cluster. If that's you then check out [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine), [Amazon EKS](https://aws.amazon.com/eks/) or the [Getting Started Guides](http://kubernetes.io/docs/getting-started-guides/).
 

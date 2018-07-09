@@ -12,6 +12,8 @@ Each kubeconfig requires a Kubernetes API Server to connect to. To support high 
 
 Retrieve the `kubernetes-the-hard-way` static IP address:
 
+---
+
 - GCP
 
 ```bash
@@ -27,6 +29,8 @@ KUBERNETES_PUBLIC_ADDRESS=$(aws elb describe-load-balancers \
   --query 'LoadBalancerDescriptions[].DNSName' \
   --output text)
 ```
+
+---
 
 ### The kubelet Kubernetes Configuration File
 

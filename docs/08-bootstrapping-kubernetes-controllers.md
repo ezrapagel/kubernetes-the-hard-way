@@ -6,6 +6,8 @@ In this lab you will bootstrap the Kubernetes control plane across three compute
 
 The commands in this lab must be run on each controller instance: `controller-0`, `controller-1`, and `controller-2`. Login to each controller instance using the `gcloud`/`ssh` command. Example:
 
+---
+
 - GCP
 
 ```bash
@@ -17,6 +19,8 @@ gcloud compute ssh controller-0
 ```bash
 ssh -l ubuntu $ip_controller_0
 ```
+
+---
 
 ### Running commands in parallel with tmux
 
@@ -61,18 +65,22 @@ sudo mv ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem \
 
 The instance internal IP address will be used to advertise the API Server to members of the cluster. Retrieve the internal IP address for the current compute instance:
 
--GCP
+---
+
+- GCP
 
 ```bash
 INTERNAL_IP=$(curl -s -H "Metadata-Flavor: Google" \
   http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip)
 ```
 
--AWS
+- AWS
 
 ```bash
 INTERNAL_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
 ```
+
+---
 
 Create the `kube-apiserver.service` systemd unit file:
 
@@ -228,6 +236,8 @@ A [Google Network Load Balancer](https://cloud.google.com/compute/docs/load-bala
 
 > The `/healthz` API server endpoint does not require authentication by default.
 
+---
+
 - GCP
 
 Create the external load balancer network resources:
@@ -279,6 +289,8 @@ for i in 0 1 2; do
   aws elb register-instances-with-load-balancer --load-balancer-name kubernetes --instances ${!inst_id}
 done
 ```
+
+---
 
 Install a basic web server to handle HTTP health checks on each controller; `controller-0`, `controller-1`, and `controller-2`.
 
@@ -353,7 +365,11 @@ ok
 
 In this section you will configure RBAC permissions to allow the Kubernetes API Server to access the Kubelet API on each worker node. Access to the Kubelet API is required for retrieving metrics, logs, and executing commands in pods.
 
-> This tutorial sets the Kubelet `--authorization-mode` flag to `Webhook`. Webhook mode uses the [SubjectAccessReview](https://kubernetes.io/docs/admin/authorization/#checking-api-access) API to determine authorization. Run the following command in any of the controllers, [because RBAC is configured through the API server, which is then stored in etcd, and will be used by all future interactions with the API](https://github.com/kelseyhightower/kubernetes-the-hard-way/issues/348#issuecomment-390367107).
+> This tutorial sets the Kubelet `--authorization-mode` flag to `Webhook`. Webhook mode uses the [SubjectAccessReview](https://kubernetes.io/docs/admin/authorization/#checking-api-access) API to determine authorization. 
+
+Run the following command in any of the controllers, [because RBAC is configured through the API server, which is then stored in etcd, and will be used by all future interactions with the API](https://github.com/kelseyhightower/kubernetes-the-hard-way/issues/348#issuecomment-390367107).
+
+---
 
 - GCP
 
@@ -366,6 +382,8 @@ gcloud compute ssh controller-0
 ```bash
 ssh -l ubuntu $ip_controller_0
 ```
+
+---
 
 Create the `system:kube-apiserver-to-kubelet` [ClusterRole](https://kubernetes.io/docs/admin/authorization/rbac/#role-and-clusterrole) with permissions to access the Kubelet API and perform most common tasks associated with managing pods:
 
@@ -419,6 +437,8 @@ EOF
 
 Retrieve the `kubernetes-the-hard-way` static IP address:
 
+---
+
 - GCP
 
 ```bash
@@ -434,6 +454,8 @@ KUBERNETES_PUBLIC_ADDRESS=$(aws elb describe-load-balancers \
   --query 'LoadBalancerDescriptions[].DNSName' \
   --output text)
 ```
+
+---
 
 Make a HTTP request for the Kubernetes version info:
 
