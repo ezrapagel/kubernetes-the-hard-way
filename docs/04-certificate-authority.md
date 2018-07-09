@@ -416,9 +416,13 @@ service-account-key.pem
 service-account.pem
 ```
 
-## Distribute the Client and Server Certificates GCP
+## Distribute the Client and Server Certificates
 
 Copy the appropriate certificates and private keys to each worker instance:
+
+---
+
+- GCP
 
 ```bash
 for instance in worker-0 worker-1 worker-2; do
@@ -426,18 +430,7 @@ for instance in worker-0 worker-1 worker-2; do
 done
 ```
 
-Copy the appropriate certificates and private keys to each controller instance:
-
-```bash
-for instance in controller-0 controller-1 controller-2; do
-  gcloud compute scp ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem \
-    service-account-key.pem service-account.pem ${instance}:~/
-done
-```
-
-## Distribute the Client and Server Certificates AWS
-
-Copy the appropriate certificates and private keys to each worker instance:
+- AWS
 
 ```bash
 for instance in worker-0 worker-1 worker-2; do
@@ -446,7 +439,22 @@ for instance in worker-0 worker-1 worker-2; do
 done
 ```
 
+---
+
 Copy the appropriate certificates and private keys to each controller instance:
+
+---
+
+- GCP
+
+```bash
+for instance in controller-0 controller-1 controller-2; do
+  gcloud compute scp ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem \
+    service-account-key.pem service-account.pem ${instance}:~/
+done
+```
+
+- AWS
 
 ```bash
 for instance in controller-0 controller-1 controller-2; do
@@ -454,7 +462,8 @@ for instance in controller-0 controller-1 controller-2; do
   scp ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem \
     service-account-key.pem service-account.pem ubuntu@${!ip}:~/
 done
-```
+
+---
 
 > The `kube-proxy`, `kube-controller-manager`, `kube-scheduler`, and `kubelet` client certificates will be used to generate client authentication configuration files in the next lab.
 

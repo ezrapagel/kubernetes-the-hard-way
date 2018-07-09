@@ -8,19 +8,19 @@ This tutorial leverages the [Google Cloud Platform](https://cloud.google.com/) t
 
 > The compute resources required for this tutorial exceed the Google Cloud Platform free tier.
 
-## Google Cloud Platform SDK
+### Google Cloud Platform SDK
 
-### Install the Google Cloud SDK
+#### Install the Google Cloud SDK
 
 Follow the Google Cloud SDK [documentation](https://cloud.google.com/sdk/) to install and configure the `gcloud` command line utility.
 
 Verify the Google Cloud SDK version is 200.0.0 or higher:
 
-```bash
+```console
 gcloud version
 ```
 
-### Set a Default Compute Region and Zone (GCP)
+#### Set a Default Compute Region and Zone (GCP)
 
 This tutorial assumes a default compute region and zone have been configured.
 
@@ -52,19 +52,19 @@ This tutorial leverages [Amazon Web Services](https://aws.amazon.com/) to stream
 
 > The compute resources required for this tutorial exceed the AWS Free Tier.
 
-## AWS Command Line Interface
+### AWS Command Line Interface
 
-### Install the AWS Command Line Interface
+#### Install the AWS Command Line Interface
 
 Follow the AWS Command Line Interface [documentation](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) to install and configure the `aws` command line utility.
 
 Verify the AWS Command Line Interface version is 1.15.39 or higher:
 
-```bash
+```console
 aws --version
 ```
 
-### Set a Default Compute Region and Zone (AWS)
+#### Set a Default Compute Region and Zone (AWS)
 
 This tutorial assumes a default compute region has been configured.
 
@@ -81,7 +81,6 @@ aws configure set region us-east-1
 ```
 
 > Use the `aws ec2 describe-regions` and `aws ec2 describe-availability-zones --region region-name` command to view additional regions and zones.
-
 
 ## Running Commands in Parallel with tmux
 

@@ -193,9 +193,13 @@ Results:
 admin.kubeconfig
 ```
 
-## Distribute the Kubernetes Configuration Files GCP
+## Distribute the Kubernetes Configuration Files
 
 Copy the appropriate `kubelet` and `kube-proxy` kubeconfig files to each worker instance:
+
+---
+
+- GCP
 
 ```bash
 for instance in worker-0 worker-1 worker-2; do
@@ -203,17 +207,7 @@ for instance in worker-0 worker-1 worker-2; do
 done
 ```
 
-Copy the appropriate `kube-controller-manager` and `kube-scheduler` kubeconfig files to each controller instance:
-
-```bash
-for instance in controller-0 controller-1 controller-2; do
-  gcloud compute scp admin.kubeconfig kube-controller-manager.kubeconfig kube-scheduler.kubeconfig ${instance}:~/
-done
-```
-
-## Distribute the Kubernetes Configuration Files AWS
-
-Copy the appropriate `kubelet` and `kube-proxy` kubeconfig files to each worker instance:
+- AWS
 
 ```bash
 for instance in worker-0 worker-1 worker-2; do
@@ -222,7 +216,21 @@ for instance in worker-0 worker-1 worker-2; do
 done
 ```
 
+--- 
+
 Copy the appropriate `kube-controller-manager` and `kube-scheduler` kubeconfig files to each controller instance:
+
+---
+
+- GCP
+
+```bash
+for instance in controller-0 controller-1 controller-2; do
+  gcloud compute scp admin.kubeconfig kube-controller-manager.kubeconfig kube-scheduler.kubeconfig ${instance}:~/
+done
+```
+
+- AWS
 
 ```bash
 for instance in controller-0 controller-1 controller-2; do
@@ -231,5 +239,7 @@ for instance in controller-0 controller-1 controller-2; do
     kube-scheduler.kubeconfig ubuntu@${!ip}:~/
 done
 ```
+
+---
 
 Next: [Generating the Data Encryption Config and Key](06-data-encryption-keys.md)
