@@ -12,7 +12,7 @@ The Kubernetes [networking model](https://kubernetes.io/docs/concepts/cluster-ad
 
 ### Virtual Private Cloud Network
 
-In this section a dedicated [Virtual Private Cloud](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) (VPC) network will be setup to host the Kubernetes cluster.
+In this section a dedicated [GCP Virtual Private Cloud](https://cloud.google.com/compute/docs/networks-and-firewalls#networks)/[AWS Virtual Private Cloud](https://aws.amazon.com/vpc/)  (VPC) network will be setup to host the Kubernetes cluster.
 
 Create the `kubernetes-the-hard-way` custom VPC network:
 
@@ -167,7 +167,7 @@ gcloud compute firewall-rules list --filter="network:kubernetes-the-hard-way"
 
 > output
 
-```bash
+```console
 NAME                                    NETWORK                  DIRECTION  PRIORITY  ALLOW                 DENY
 kubernetes-the-hard-way-allow-external  kubernetes-the-hard-way  INGRESS    1000      tcp:22,tcp:6443,icmp
 kubernetes-the-hard-way-allow-internal  kubernetes-the-hard-way  INGRESS    1000      tcp,udp,icmp
