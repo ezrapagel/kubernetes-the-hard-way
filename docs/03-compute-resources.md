@@ -33,6 +33,10 @@ vpcId=`aws ec2 create-vpc \
   --query 'Vpc.VpcId' \
   --output text`
 aws ec2 create-tags --resources $vpcId --tag Key=Name,Value=kubernetes-the-hard-way
+
+# attach an internet gateway for external traffic
+igwId=`aws ec2 create-internet-gateway --query 'InternetGateway.InternetGatewayId' --output text`
+aws ec2 attach-internet-gateway --vpc-id $vpcId --internet-gateway-id $igwId
 ```
 
 ---
